@@ -34,7 +34,7 @@ public class AccountServiceImpl implements IAccountService {
                     + customerDto.getMobileNumber());
         }
         customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy(AccountConstants.CREATED_BY);
+        //customer.setCreatedBy(AccountConstants.CREATED_BY);
         Customer savedCustomer = customerRepository.save(customer);
         accountRepository.save(createNewAccount(savedCustomer));
 
@@ -68,8 +68,8 @@ public class AccountServiceImpl implements IAccountService {
         newAccount.setAccountNumber(randomAccNumber);
         newAccount.setAccountType(AccountConstants.SAVINGS);
         newAccount.setBranchAddress(AccountConstants.ADDRESS);
-        newAccount.setCreatedAt(LocalDateTime.now());
-        newAccount.setCreatedBy(AccountConstants.CREATED_BY);
+        //newAccount.setCreatedAt(LocalDateTime.now());
+        //newAccount.setCreatedBy(AccountConstants.CREATED_BY);
         return newAccount;
     }
 
