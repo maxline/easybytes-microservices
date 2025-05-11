@@ -4,7 +4,9 @@ import com.eazybytes.loans.dto.LoanDto;
 
 public interface ILoanService {
 
-    void createLoan(LoanDto customerDto);
+//    void createLoan(LoanDto customerDto);
+
+    void createLoan(String mobileNumber);
 
     LoanDto fetchLoan(String mobileNumber);
 

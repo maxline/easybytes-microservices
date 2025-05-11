@@ -40,9 +40,10 @@ public class LoanController {
             description = "HTTP Status 201 CREATED"
     )
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody LoanDto loanDto) {
-        iLoanService.createLoan(loanDto);
-
+    public ResponseEntity<ResponseDto> createLoan(@RequestParam
+                                                  @Pattern(regexp = "(^$|[0-9]{1,10})", message = "Mobile number must be 10 digits")
+                                                  String mobileNumber) {
+        iLoanService.createLoan(mobileNumber);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new ResponseDto(LoanConstants.STATUS_201, LoanConstants.MESSAGE_201));

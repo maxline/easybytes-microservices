@@ -1,5 +1,6 @@
 package com.eazybytes.loans.service.impl;
 
+import com.eazybytes.loans.constants.LoanConstants;
 import com.eazybytes.loans.service.ILoanService;
 import com.eazybytes.loans.dto.LoanDto;
 import com.eazybytes.loans.entity.Loan;
@@ -11,21 +12,39 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @AllArgsConstructor
 public class LoanServiceImpl implements ILoanService {
     private LoanRepository loanRepository;
 
+    /**
+     * @param mobileNumber - Mobile Number of the Customer
+     */
     @Override
-    public void createLoan(LoanDto loanDto) {
-        Loan loan = LoanMapper.mapToLoan(loanDto, new Loan());
-        Optional<Loan> optionalLoan = loanRepository.findByMobileNumber(loanDto.getMobileNumber());
-        if (optionalLoan.isPresent()) {
-            throw new LoanAlreadyExistsException("Loan already exists with given mobile number "
-                    + loanDto.getMobileNumber());
+    public void createLoan(String mobileNumber) {
+        Optional<Loan> optionalLoans = loanRepository.findByMobileNumber(mobileNumber);
+        if (optionalLoans.isPresent()) {
+            throw new LoanAlreadyExistsException("Loan already registered with given mobileNumber " + mobileNumber);
         }
-        Loan savedLoan = loanRepository.save(loan);
+        loanRepository.save(createNewLoan(mobileNumber));
+    }
+
+    /**
+     * @param mobileNumber - Mobile Number of the Customer
+     * @return the new loan details
+     */
+    private Loan createNewLoan(String mobileNumber) {
+        Loan newLoan = new Loan();
+        long randomLoanNumber = 100000000000L + new Random().nextInt(900000000);
+        newLoan.setLoanNumber(Long.toString(randomLoanNumber));
+        newLoan.setMobileNumber(mobileNumber);
+        newLoan.setLoanType(LoanConstants.HOME_LOAN);
+        newLoan.setTotalLoan(LoanConstants.NEW_LOAN_LIMIT);
+        newLoan.setAmountPaid(0);
+        newLoan.setOutstandingAmount(LoanConstants.NEW_LOAN_LIMIT);
+        return newLoan;
     }
 
     @Override
