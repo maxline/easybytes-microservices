@@ -11,6 +11,7 @@ https://github.com/eazybytes/microservices/
 - chrome-extension Talent Api Tester - simple Postman alternative.
 - http://localhost:8080/h2-console/ - h2 database console.
 - https://springdoc.org/ - springdoc openapi documentation.
+- https://www.lucidchart.com/blog/ddd-event-storming/ - event storming.
 
 ## Learnings
 - @MappedSuperclass - marks the class as a parent for other entity classes.
