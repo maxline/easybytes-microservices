@@ -21,3 +21,10 @@ https://github.com/eazybytes/microservices/
 - create an account: POST http://localhost:8080/api/create
 - get account details: GET http://localhost:8080/api/fetch?mobileNumber=001
 - swagger: http://localhost:8080/swagger-ui/index.html
+
+## Tips
+- A better Constructor annotation for the controller.
+Instead of creating a constructor manually because of the inclusion of String buildVersion, 
+you can define the IAccountsService as "final" and use the @RequeridArgsConstructor of Lombok.
+If you have intentions to use @RequeridArgsConstructor annotation, then you need to mark these fields as well final. 
+So that Spring takes care of Auto-wiring them as dependencies.
