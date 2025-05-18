@@ -48,3 +48,11 @@ Alternative approach to Dockerfile. Automatically generate a production ready OC
 
 3) Run a container from docker image
 - $ loans > docker run -d -p 8090:8090 sergml/loans:s4   
+
+
+## Cards - Google Jib approach
+https://github.com/GoogleContainerTools/jib
+
+- $ cards > mvn compile jib:dockerBuild
+- $ cards > docker images
+- $ cards > docker run -d -p 9000:9000 sergml/cards:s4
