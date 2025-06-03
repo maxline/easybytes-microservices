@@ -13,8 +13,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,14 +31,15 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 public class AccountController {
 
-    private IAccountService iAccountService;
+    private final IAccountService iAccountService;
+    private final Environment environment;
 
     @Value("${build.version}")
     private String buildVersion;
 
-
-    public AccountController(IAccountService iAccountService) {
+    public AccountController(IAccountService iAccountService, Environment environment) {
         this.iAccountService = iAccountService;
+        this.environment = environment;
     }
 
     @Operation(summary = "Create an account REST API",
@@ -150,10 +152,42 @@ public class AccountController {
                     )
             )
     })
-
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildVersion() {
         return ResponseEntity.status(HttpStatus.OK).
                 body(buildVersion);
     }
+
+    @Operation(summary = "Get Java version",
+            description = "Get Java version that deployed into account application"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status 200 OK"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    })
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity.status(HttpStatus.OK).
+                body(environment.getProperty("java.version") +
+                        "\n" + environment.getProperty("HOME") +
+                        "\n" + environment.getProperty("MAVEN_HOME") +
+                        "\n" + environment.getProperty("user.dir") +
+                        "\n" + environment.getProperty("user.name") +
+                        "\n" + environment.getProperty("user.timezone") +
+                        "\n" + environment.getProperty("spring.profiles.active") +
+                        "\n" + environment.getProperty("server.port") +
+                        "\n" + environment.getProperty("server.servlet.context-path")
+                );
+    }
+
+
 }
