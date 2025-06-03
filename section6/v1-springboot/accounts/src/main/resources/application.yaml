@@ -16,3 +16,11 @@ spring:
     show-sql: true
 build:
   version: 1.0
+accounts:
+  message: "Welcome to Accounts Service API"
+  contactDetails:
+    name: "Serhii"
+    mail: "serhii@example.com"
+  onCallSupport:
+    - (555) 555-5555
+    - (444) 444-4444
