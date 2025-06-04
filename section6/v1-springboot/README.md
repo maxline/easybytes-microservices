@@ -7,3 +7,8 @@ AccountController - build.version
 ## 72.  reading configuration using @ConfigurationProperties
 - AccountContactInfoDto - `@ConfigurationProperties(prefix = "accounts")`
 - AccountsApplication - `@EnableConfigurationProperties(AccountContactInfoDto.class)`
+
+## 74.  Spring boot profiles
+- application.yaml
+- application_prod.yaml
+- application_qa.yaml
