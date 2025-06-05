@@ -1,0 +1,14 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+build:
+  version: 1.0
+cards:
+  message: "Welcome to Cards related Prod APIs"
+  contactDetails:
+    name: "Serhii Cards Prod"
+    mail: "serhii@example.com"
+  onCallSupport:
+    - (333) 333-3333
+    - (444) 444-4444

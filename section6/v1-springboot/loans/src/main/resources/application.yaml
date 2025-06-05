@@ -14,3 +14,19 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    import:
+      - "application_qa.yaml"
+      - "application_prod.yaml"
+  profiles:
+    active: "prod"
+build:
+  version: 3.0
+loans:
+  message: "Welcome to Loans Service API"
+  contactDetails:
+    name: "Serhii Loans"
+    mail: "serhii@example.com"
+  onCallSupport:
+    - (555) 555-5555
+    - (444) 444-4444

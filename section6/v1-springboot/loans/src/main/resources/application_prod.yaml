@@ -1,0 +1,14 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+build:
+  version: 1.0
+loans:
+  message: "Welcome to Loans related Prod APIs"
+  contactDetails:
+    name: "Serhii LoansProd"
+    mail: "serhii@example.com"
+  onCallSupport:
+    - (333) 333-3333
+    - (444) 444-4444
