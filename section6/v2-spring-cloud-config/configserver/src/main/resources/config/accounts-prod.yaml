@@ -1,0 +1,10 @@
+build:
+  version: 1.0
+accounts:
+  message: "Welcome to Accounts related Prod APIs"
+  contactDetails:
+    name: "Serhii Prod"
+    mail: "serhii@example.com"
+  onCallSupport:
+    - (333) 333-3333
+    - (444) 444-4444

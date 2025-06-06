@@ -1,0 +1,10 @@
+build:
+  version: 3.0
+cards:
+  message: "Welcome to Cards Service API"
+  contactDetails:
+    name: "Serhii default profile"
+    mail: "serhii@example.com"
+  onCallSupport:
+    - (555) 555-5555
+    - (444) 444-4444

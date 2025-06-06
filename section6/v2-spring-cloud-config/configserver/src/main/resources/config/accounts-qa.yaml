@@ -1,0 +1,10 @@
+build:
+  version: 2.0
+accounts:
+  message: "Welcome to Accounts related QA APIs"
+  contactDetails:
+    name: "Serhii QA"
+    mail: "serhii@example.com"
+  onCallSupport:
+    - (222) 222-2222
+    - (444) 444-4444
