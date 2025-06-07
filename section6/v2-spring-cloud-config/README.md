@@ -27,3 +27,12 @@ add spring cloud client dependency "spring-cloud-starter-config"
 - `uri: "https://github.com/eazybytes/eazybytes-config.git"`
 
 - Official documentation: https://docs.spring.io/spring-cloud-config/reference/server/environment-repository.html
+
+## 87. Encryption & Decryption of properties inside Config server
+- application.yaml `encrypt: key: "111aaa222bbb333ccc"`
+- accounts-prod.yaml `{cipher}`
+
+- http://localhost:8071/encrypt
+- http://localhost:8071/decrypt
+- http://localhost:8071/accounts/prod - `"accounts.contactDetails.mail": "serg_encripted@mail.com"`
+- http://localhost:8080/api/contact-info - `"mail": "serg_encripted@mail.com"`

@@ -4,7 +4,7 @@ accounts:
   message: "Welcome to Accounts related Prod APIs"
   contactDetails:
     name: "Serhii Prod"
-    mail: "serhii@example.com"
+    mail: "{cipher}61ade50cb85bf9c8a301592b81c45b163978199cbb0b8dcd298a72532b864b967cc325f2b79879535b117b52b8f0faae"
   onCallSupport:
     - (333) 333-3333
     - (444) 444-4444
