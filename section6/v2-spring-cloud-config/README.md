@@ -36,3 +36,8 @@ add spring cloud client dependency "spring-cloud-starter-config"
 - http://localhost:8071/decrypt
 - http://localhost:8071/accounts/prod - `"accounts.contactDetails.mail": "serg_encripted@mail.com"`
 - http://localhost:8080/api/contact-info - `"mail": "serg_encripted@mail.com"`
+
+## 88. Refresh configurations at runtime using refresh actuator path
+- http://localhost:8080/actuator/refresh
+- Change property values runtime without restarting the microservice
+management: endpoints: web: exposure: include: refresh
