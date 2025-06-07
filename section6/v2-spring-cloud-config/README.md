@@ -11,4 +11,9 @@ config folder:
 
 - http://localhost:8071/accounts/qa
 - http://localhost:8071/cards/native
+- http://localhost:8071/cards/default
 - http://localhost:8071/loans/prod
+
+## 83. Updating Accounts Microservice to read properties from Config Server
+add spring cloud client dependency "spring-cloud-starter-config"
+## 84. Updating Loans & Cards Microservice to read properties from Config Server
