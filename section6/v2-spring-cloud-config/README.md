@@ -21,3 +21,9 @@ add spring cloud client dependency "spring-cloud-starter-config"
 ## 85. Reading configurations from a file system location
 - application.yaml
 `search-locations: "file:///Users//mac//Learning//udemy-easybytes//config"`
+
+## 86. Reading configurations from a GitHub repository
+- `profiles: activate: git`
+- `uri: "https://github.com/eazybytes/eazybytes-config.git"`
+
+- Official documentation: https://docs.spring.io/spring-cloud-config/reference/server/environment-repository.html
