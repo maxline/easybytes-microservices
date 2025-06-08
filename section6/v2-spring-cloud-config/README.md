@@ -104,3 +104,20 @@ https://github.com/maxline/eazybytes-config/settings/hooks >
 "status": "DOWN"
 },
 ```
+
+## 93. Updating Docker Compose file to adapt Config Server changes - Part 2
+```
+  depends_on:
+    rabbit:
+      condition: service_healthy
+  healthcheck:
+    test: ["curl --fail silent http://localhost:8071/actuator/health/readiness | grep UP || exit 1"]
+    interval: 10s
+    timeout: 5s
+    retries: 3
+    start_period: 10s
+ ...   
+  depends_on:
+    configserver:
+      condition: service_healthy
+```
