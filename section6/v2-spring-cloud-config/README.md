@@ -91,3 +91,16 @@ it is automatically changed in http://localhost:8080/api/contact-info <br>
 and can be checked at 
 https://github.com/maxline/eazybytes-config/settings/hooks > 
  Manage webhooks - Recent Deliveries
+
+## 92. Introduction to Liveness and Readiness probes
+- http://localhost:8071/actuator/health
+- http://localhost:8071/actuator/health/liveness
+- http://localhost:8071/actuator/health/readiness
+```
+"liveness": {
+"status": "UP"
+},
+"readiness": {
+"status": "DOWN"
+},
+```
