@@ -71,3 +71,23 @@ refreshBusEndpoint
 - http://localhost:8071/accounts/prod check changes that happens runtime
 - http://localhost:8080/actuator/busrefresh - refresh at runtime and update all 3 microservices config changes
 - http://localhost:8080/api/contact-info - check changes that happens after refresh
+
+## 90. Refresh config at runtime using Spring Cloud Bus & Spring Cloud Config monitor
+pom.xml `spring-cloud-config-monitor`
+- https://hookdeck.com/
+- https://console.hookdeck.com/
+```
+brew install hookdeck/hookdeck/hookdeck
+hookdeck login --cli-key 4wj4zlgjd57xo7oyk3bij432vk1n981cq1qtaeucsn190eyr1y
+hookdeck listen 8071 Source --cli-path /monitor
+
+Source URL: https://hkdk.events/egkisq4wbhfwc5
+>>> Log
+2025-06-08 12:47:19 [200] POST http://localhost:8071/monitor | https://dashboard.hookdeck.com/cli/events/evt_lSD99gxc03ZX9iwNvA
+
+```
+After config changed in git https://github.com/maxline/eazybytes-config.git - 
+it is automatically changed in http://localhost:8080/api/contact-info <br>
+and can be checked at 
+https://github.com/maxline/eazybytes-config/settings/hooks > 
+ Manage webhooks - Recent Deliveries
