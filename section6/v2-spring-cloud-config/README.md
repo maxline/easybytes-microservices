@@ -41,3 +41,33 @@ add spring cloud client dependency "spring-cloud-starter-config"
 - http://localhost:8080/actuator/refresh
 - Change property values runtime without restarting the microservice
 management: endpoints: web: exposure: include: refresh
+
+## 89. Refresh configurations at runtime using Spring Cloud Bus
+RabbitMQ
+- https://www.rabbitmq.com/docs/download
+- latest RabbitMQ 4.x
+`docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:4-management`
+- put "spring-cloud-starter-bus-amqp" dependency in each microservice pom.xml
+- put   
+```
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: "guest"
+  password: "guest"
+```
+  to application.yaml 
+- http://localhost:8080/actuator
+```
+"busrefresh-destinations": {
+"href": "http://localhost:8080/actuator/busrefresh/{*destinations}",
+"templated": true
+},
+```
+- http://localhost:8080/actuator/beans
+refreshBusEndpoint
+
+- change configurations properties at git config server
+- http://localhost:8071/accounts/prod check changes that happens runtime
+- http://localhost:8080/actuator/busrefresh - refresh at runtime and update all 3 microservices config changes
+- http://localhost:8080/api/contact-info - check changes that happens after refresh
