@@ -121,3 +121,6 @@ https://github.com/maxline/eazybytes-config/settings/hooks >
     configserver:
       condition: service_healthy
 ```
+
+
+## 94. Optimizing Docker Compose file
