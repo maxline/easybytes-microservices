@@ -124,3 +124,30 @@ https://github.com/maxline/eazybytes-config/settings/hooks >
 
 
 ## 94. Optimizing Docker Compose file
+
+## 95. Generating Docker images and pushing them into Docker Hub
+
+```
+accounts > mvn compile jib:dockerBuild
+cards > mvn compile jib:dockerBuild
+loans > mvn compile jib:dockerBuild
+configserver > mvn compile jib:dockerBuild
+
+docker images
+
+configserver > docker image push docker.io/sergml/accounts:s6
+configserver > docker image push docker.io/sergml/cards:s6
+configserver > docker image push docker.io/sergml/loans:s6
+configserver > docker image push docker.io/sergml/configserver:s6
+
+
+```
+
+## 96. Testing Config Server changes end to end using Docker compose & default profile
+```
+cd docker-compose/default
+docker compose up -d
+```
+test
+- http://localhost:8080/api/java-version
+- http://localhost:8080/api/build-info (info from default profile shows up)
